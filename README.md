@@ -121,6 +121,10 @@ se der erro, vá para a porta: [http://localhost:3001](http://localhost:3001)
 
 É só recaregar a página, para ver as alterações realizadas a cada novo pedido ou fechamento de conta.
 
+Imagens da Interface:
+![alt text](image-1.png)
+![alt text](image-2.png)
+
 ## Funcionalidades Implementadas
 ✅ Criar pedidos e vincular a mesas
 ✅ Listar pedidos e mesas
