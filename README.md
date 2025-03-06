@@ -39,9 +39,43 @@ pip install -r requirements.txt
 ```
 
 2. Configurar o Banco de Dados (MariaDB)
-instale o MariaDB, crie usuário e um banco chamado `restaurant`.
+instale o MariaDB, crie usuário, um banco chamado `restaurant` e as tabelas.
+```bash
+mysql -u (seu_usuário) -p
+```
+
 ```sql
 CREATE DATABASE restaurant;
+
+USE restaurant;
+
+CREATE TABLE tables (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    status VARCHAR(50) DEFAULT 'aberta'
+);
+
+CREATE TABLE menu_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price INT NOT NULL  -- Preço armazenado em centavos (ex: 100 = R$1,00)
+);
+
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    table_id INT NOT NULL,
+    total_price INT NOT NULL,  -- Total em centavos
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (table_id) REFERENCES tables(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    menu_item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(id) ON DELETE CASCADE
+);
 ```
 
 2. Criar as tabelas no banco de dados
