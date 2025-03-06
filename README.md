@@ -85,12 +85,13 @@ npm run dev
 O frontend estará disponível em: [http://localhost:3000](http://localhost:3000)
 se der erro, vá para a porta: [http://localhost:3001](http://localhost:3001)
 
+É só recaregar a página, para ver as alterações realizadas a cada novo pedido ou fechamento de conta.
 
 ## Funcionalidades Implementadas
 ✅ Criar pedidos e vincular a mesas
 ✅ Listar pedidos e mesas
 ✅ Fechar contas e remover pedidos de mesas fechadas
-✅ Interface moderna e responsiva
+✅ Interface Intuitiva
 ✅ Backend estruturado com FastAPI e banco de dados MariaDB
 
 ## Funcionalidades Pendentes
