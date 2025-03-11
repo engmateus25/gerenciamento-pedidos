@@ -9,12 +9,12 @@ engine = create_engine(DB_URL)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Inserir mesas se não existirem
+
 for i in range(1, 6):
     if not session.query(exists().where(Table.id == i)).scalar():
         session.add(Table(id=i, status="aberta"))
 
-# Inserir itens no menu se não existirem
+
 menu_items = [
     {"name": "Hambúrguer Clássico", "price": 2990},
     {"name": "Pizza Média", "price": 4590},
@@ -25,10 +25,12 @@ menu_items = [
     {"name": "Churrasco Misto", "price": 1990},
 ]
 
+
 for item in menu_items:
     exists = session.query(MenuItem).filter_by(name=item["name"]).first()
     if not exists:
         session.add(MenuItem(**item))
+
 
 session.commit()
 session.close()

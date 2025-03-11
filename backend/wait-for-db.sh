@@ -1,6 +1,3 @@
-#!/bin/bash
-# Aguarda a disponibilidade do MySQL
-
 echo "Aguardando o MySQL iniciar..."
 
 until mysql -h db -u user1 -p123 restaurant; do

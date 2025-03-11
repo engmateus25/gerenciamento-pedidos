@@ -1,6 +1,6 @@
 import api from "./api";
 
-// Tipo para pedidos existentes (com ID)
+
 interface Order {
     id: number;
     table_id: number;
@@ -8,12 +8,10 @@ interface Order {
 }
 
 
-// Tipo para novos pedidos (sem ID)
 export interface NewOrder {
     table_id: number;
-    items: OrderItem[]; // inclui os itens
+    items: OrderItem[]; 
 }
-
 
 
 export interface OrderItem {
@@ -27,7 +25,7 @@ export const getOrders = async (): Promise<Order[]> => {
     return response.data;
 };
 
-// Criar pedido com o tipo correto
+
 export const createOrder = async (orderData: NewOrder): Promise<Order> => {
     const response = await api.post("/orders", orderData);
     return response.data;
@@ -39,7 +37,6 @@ export const closeOrder = async (orderId: number): Promise<Order> => {
 };
 
 
-// Fechar uma mesa pelo ID
 export const closeTable = async (tableId: number): Promise<{ message: string }> => {
     const response = await api.post(`/tables/${tableId}/close`);
     return response.data;

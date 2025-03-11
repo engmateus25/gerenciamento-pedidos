@@ -45,7 +45,6 @@ def get_table(table_id: int, db: Session = Depends(get_db)):
 
 
 # Fecha a conta de uma mesa pelo ID.
-# Fecha a conta de uma mesa pelo ID.
 @router.post("/{table_id}/close", response_model=dict)
 def close_table(table_id: int, db: Session = Depends(get_db)):
     table = db.query(models.Table).filter(models.Table.id == table_id).first()

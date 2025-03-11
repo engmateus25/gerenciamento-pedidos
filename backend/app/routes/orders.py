@@ -21,6 +21,16 @@ def get_db():
 # Rota para criar um novo pedido e calcular o preço
 @router.post("/", response_model=schemas.OrderResponse)
 def create_order(order: schemas.OrderCreate, db: Session = Depends(get_db)):
+    # Verifica se a mesa existe
+    table = db.query(models.Table).filter(models.Table.id == order.table_id).first()
+    if not table:
+        raise HTTPException(status_code=404, detail="Table not found")
+
+    # Atualiza o status da mesa para "aberta"
+    if table.status == "fechada":
+        table.status = "aberta"
+        db.commit()
+
     # Criar o pedido
     db_order = models.Order(
         table_id=order.table_id,
