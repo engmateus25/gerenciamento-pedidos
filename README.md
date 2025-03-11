@@ -27,6 +27,7 @@ O projeto está completamente dockerizado, dispensando a necessidade de configur
 git clone https://github.com/seu-usuario/gerenciamento-pedidos.git
 cd gerenciamento-pedidos
 ```
+---
 
 ### 2 Rodar o projeto com Docker
 Certifique-se de ter o **Docker** e **Docker Compose** instalados.
@@ -48,6 +49,20 @@ Aguarde até que todos os containers estejam rodando corretamente.
 
 - **API FastAPI:** [http://localhost:8000/docs](http://localhost:8000/docs)
 - **Interface do usuário (Frontend):** [http://localhost:3000](http://localhost:3000)
+
+---
+
+### 4 Caso de erro no preenchimento do banco
+
+Caso o a API esteja vazia, significa que houve erro no script que automatiza o processo.
+Então execute os seguintes comandos manualmente:
+```bash
+docker exec -it restaurante_backend alembic upgrade head 
+```
+
+```bash
+docker exec -it restaurante_backend python -m app.populate_db
+```
 
 ---
 
