@@ -25,6 +25,15 @@ O projeto está completamente dockerizado, dispensando a necessidade de configur
 ### 1️ Clonar o repositório
 ```bash
 git clone https://github.com/seu-usuario/gerenciamento-pedidos.git
+```
+
+Ou clone o repositório usando uma chave SSH, caso você já tenha uma chave cadastrada no github.
+```bash
+git clone git@github.com:seu-usuario/gerenciamento-pedidos.git
+```
+
+Depois disso, navegue até o diretório do projeto:
+```bash
 cd gerenciamento-pedidos
 ```
 ---
@@ -63,6 +72,8 @@ docker exec -it restaurante_backend alembic upgrade head
 ```bash
 docker exec -it restaurante_backend python -m app.populate_db
 ```
+
+Após isto, pode ir novamente para as urls do projeto e aproveitar as funcionalidades!
 
 ---
 
